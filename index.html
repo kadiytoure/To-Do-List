@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO</title>
+</head>
+<header>
+    <h1>TODO</h1>
+</header>
+
+<body>
+    <form action="#" method="post">
+
+        <div>
+            <label for="titre">Title </label>
+            <input type="title" id="titre" />
+        </div>
+        <div>
+            <label for="commentaire">Comment </label>
+            <input type="commentaire" id="comment" />
+        </div>
+
+        <div>
+            <button type="envoyer">submit</button>
+        </div>
+    </form>
+
+    <section id="fill_me">
+    </section>
+    <script>
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function(e) {
+            let container = document.getElementById("fill_me").innerHTML;
+            let titre = document.getElementById("titre").value;
+            let commentaire = document.getElementById("comment").value;
+
+            console.log(titre);
+            console.log(commentaire);
+
+            let fill_me = document.getElementById("fill_me");
+
+            fill_me.textContent = titre + commentaire;
+            let p = "<p>" + titre + commentaire + "</p>";
+            console.log(p);
+            let button = "<button>" + "ok" + "</button>";
+            console.log(button);
+            let h1 = "<h1>" + titre + "</h1>";
+            console.log(h1);
+            let pa = "<p>" + commentaire + "</p>";
+            console.log(pa);
+            fill_me.innerHTML = p + button + h1 + pa + container;
+
+            e.preventDefault();
+
+        });
+    </script>
+
+</body>
+
+</html>
