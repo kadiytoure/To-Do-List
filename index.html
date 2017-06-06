@@ -12,49 +12,41 @@
 </header>
 
 <body>
-    <form action="#" method="post">
+    <form action="GFHG" method="post">
 
         <div>
             <label for="titre">Title </label>
-            <input type="title" id="titre" />
+            <input type="text" id="titre" />
         </div>
         <div>
             <label for="commentaire">Comment </label>
-            <input type="commentaire" id="comment" />
+            <input type="text" id="commentaire" />
         </div>
 
         <div>
-            <button type="envoyer">submit</button>
+            <button type="submit">submit</button>
         </div>
     </form>
 
     <section id="fill_me">
     </section>
     <script>
-        let form = document.querySelector("form");
-        form.addEventListener("submit", function(e) {
-            let container = document.getElementById("fill_me").innerHTML;
-            let titre = document.getElementById("titre").value;
-            let commentaire = document.getElementById("comment").value;
-
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let titre = document.querySelector("#titre").value;
+            let commentaire = document.querySelector("#commentaire").value;
             console.log(titre);
             console.log(commentaire);
-
-            let fill_me = document.getElementById("fill_me");
-
-            fill_me.textContent = titre + commentaire;
-            let p = "<p>" + titre + commentaire + "</p>";
-            console.log(p);
-            let button = "<button>" + "ok" + "</button>";
-            console.log(button);
-            let h1 = "<h1>" + titre + "</h1>";
-            console.log(h1);
-            let pa = "<p>" + commentaire + "</p>";
-            console.log(pa);
-            fill_me.innerHTML = p + button + h1 + pa + container;
-
-            e.preventDefault();
-
+            let creatediv = document.createElement("div");
+            document.body.appendChild(creatediv);
+            creatediv.textContent = titre + commentaire;
+            let createbutton = document.createElement("button");
+            creatediv.appendChild(createbutton);
+            createbutton.addEventListener("click", function(event) {
+                creatediv.remove();
+                creatediv.innerHTML;
+            });
+            // input type checkbox
         });
     </script>
 
