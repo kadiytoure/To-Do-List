@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO</title>
+</head>
+<header>
+    <h1>TODO</h1>
+</header>
+
+<body>
+    <form action="GFHG" method="post">
+
+        <div>
+            <label for="titre">Title </label>
+            <input type="text" id="titre" />
+        </div>
+        <div>
+            <label for="commentaire">Comment </label>
+            <input type="text" id="commentaire" />
+        </div>
+
+        <div>
+            <button type="submit">submit</button>
+        </div>
+    </form>
+
+    <section id="fill_me">
+    </section>
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let titre = document.querySelector("#titre").value;
+            let commentaire = document.querySelector("#commentaire").value;
+            console.log(titre);
+            console.log(commentaire);
+            let creatediv = document.createElement("div");
+            document.body.appendChild(creatediv);
+            creatediv.textContent = titre + commentaire;
+            let createbutton = document.createElement("button");
+            creatediv.appendChild(createbutton);
+            createbutton.addEventListener("click", function(event) {
+                creatediv.remove();
+                creatediv.innerHTML;
+            });
+            // input type checkbox
+        });
+    </script>
+
+</body>
+
+</html>

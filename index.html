@@ -5,51 +5,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TODO</title>
+    <link href="https://fonts.googleapis.com/css?family=Pattaya" rel="stylesheet">
+    <title>My to-do-list</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Pattaya');
+        body {
+            background-image: url(provision.jpg);
+            background-position: center;
+            display: flex;
+            flex-direction: center;
+        }
+        
+        #oui {
+            font-family: 'Pattaya', sans-serif;
+            color: blue;
+            font-size: 25px;
+        }
+        
+        ul {
+            font-family: 'Pattaya', sans-serif;
+            color: black;
+            font-size: 35px;
+        }
+        
+        #titre {
+            font-family: 'Pattaya', sans-serif;
+            color: black;
+            font-size: 70px;
+        }
+    </style>
 </head>
-<header>
-    <h1>TODO</h1>
-</header>
 
 <body>
-    <form action="GFHG" method="post">
 
-        <div>
-            <label for="titre">Title </label>
-            <input type="text" id="titre" />
+    <form>
+        <ul>
+            <input type="checkbox" name="casepro" id="manger" />
+            <label for="manger"></label>
+        </ul>
+        <h1> TODO LIST </h1>
+        <div id="titre">
+            <label for="oui">Veuillez taper vos provisions pour aujourd'hui:</label>
+            <input type="text" name="idtext" placeholder="exemple: 3 salades" id="oui" />
         </div>
         <div>
-            <label for="commentaire">Comment </label>
-            <input type="text" id="commentaire" />
+            <input type="submit" value="submit" />
         </div>
 
-        <div>
-            <button type="submit">submit</button>
-        </div>
+
     </form>
-
-    <section id="fill_me">
-    </section>
     <script>
-        document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            let titre = document.querySelector("#titre").value;
-            let commentaire = document.querySelector("#commentaire").value;
-            console.log(titre);
-            console.log(commentaire);
-            let creatediv = document.createElement("div");
-            document.body.appendChild(creatediv);
-            creatediv.textContent = titre + commentaire;
-            let createbutton = document.createElement("button");
-            creatediv.appendChild(createbutton);
-            createbutton.addEventListener("click", function(event) {
-                creatediv.remove();
-                creatediv.innerHTML;
-            });
-            // input type checkbox
-        });
-    </script>
+        "use strict";
+        //affichage
+        let afficherListe = function() {
+            // mettre le chemin qui permet d'acceder à ul
+            let ul = document.querySelector("ul");
+            // vider la liste ul avant de réafficher la liste
+            ul.innerHTML = "";
+            /*ul.addEventListener('click', function() {
+                ul.remove();
+                ul.innerHTML;
+            }); < */
 
+            //Une ou plusieurs instructions JavaScript
+            for (let i = 0; i < things.length; i = i + 1) {
+                // créer élément li
+                let li = document.createElement('li');
+                // on remplit le contenu li , li = things
+                li.textContent = things[i];
+                // appendchild permet d'intégrer li dans ul , il fonctionne uniquement avec createElement
+                ul.appendChild(li);
+                let button = document.createElement("button");
+                button.textContent = "X";
+                document.querySelector("ul").appendChild(button);
+                button.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    suppression(i);
+                    afficherListe();
+                });
+            };
+
+
+
+        };
+
+        // création modéle de données
+        let things = [];
+        // addEventListener (), ce qu'il doit entendre "" et ce qu'il doit faire
+        // évenement sur l'action de submit formulaire
+        document.querySelector("form").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+            // rentrer les valeurs dans le tableau avant de mettre afficherliste()
+            // création variable avec contenu input
+            // queryselector pour les selecteurs css
+            let inputcontent = document.querySelector("#oui").value;
+            // intégrer contenu de l'input sur le tableau
+
+            things.push(inputcontent);
+
+
+            afficherListe();
+
+        });
+
+        function suppression(element) {
+            things.splice(element, 1);
+        }
+
+        /*
+                let fish = function(remove) {
+                    things.splice(3, 1);
+                    let createbutton = document.createElement("button");
+                }
+                */
+    </script>
 </body>
+
 
 </html>
