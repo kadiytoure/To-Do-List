@@ -13,7 +13,8 @@
             background-image: url(provision.jpg);
             background-position: center;
             display: flex;
-            flex-direction: center;
+            flex-direction: column;
+            background-color: blanchedalmond;
         }
         
         #oui {
@@ -25,7 +26,7 @@
         ul {
             font-family: 'Pattaya', sans-serif;
             color: black;
-            font-size: 35px;
+            font-size: 20px;
         }
         
         #titre {
@@ -33,17 +34,20 @@
             color: black;
             font-size: 70px;
         }
+        
+        h1 {
+            font-family: 'Pattaya', sans-serif;
+            font-size: 90px;
+            color: blueviolet;
+        }
     </style>
 </head>
 
 <body>
-
+    <ul></ul>
     <form>
-        <ul>
-            <input type="checkbox" name="casepro" id="manger" />
-            <label for="manger"></label>
-        </ul>
-        <h1> TODO LIST </h1>
+
+        <h1> TO DO LIST YOUR GROCERIES </h1>
         <div id="titre">
             <label for="oui">Veuillez taper vos provisions pour aujourd'hui:</label>
             <input type="text" name="idtext" placeholder="exemple: 3 salades" id="oui" />
@@ -77,6 +81,9 @@
                 ul.appendChild(li);
                 let button = document.createElement("button");
                 button.textContent = "X";
+                let coche = document.createElement("input");
+                coche.type = "checkbox";
+                li.appendChild(coche);
                 document.querySelector("ul").appendChild(button);
                 button.addEventListener("click", function(e) {
                     e.preventDefault();
